@@ -1,5 +1,6 @@
 package com.example.altr.controller;
 
+import com.example.altr.exceptions.ToughLuckException;
 import com.example.altr.model.Persons;
 import com.example.altr.service.PersonsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,14 @@ public class PersonsController {
     private PersonsService service;
 
     @GetMapping("/persons")
-    public ResponseEntity<List<Persons>> list() {
+    public ResponseEntity<?> list() {
         try {
             List<Persons> persons = service.listPersons();
             return new ResponseEntity<List<Persons>>(persons, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<List<Persons>>(HttpStatus.NOT_FOUND);
+        } catch (ToughLuckException e) {
+            return new ResponseEntity<>("Tough Luck", HttpStatus.BAD_REQUEST);
         }
-
     }
 }

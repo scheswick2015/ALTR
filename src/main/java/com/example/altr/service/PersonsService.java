@@ -1,5 +1,6 @@
 package com.example.altr.service;
 
+import com.example.altr.exceptions.ToughLuckException;
 import com.example.altr.model.Persons;
 import com.example.altr.repository.PersonsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,11 @@ public class PersonsService {
     @Autowired
     private PersonsRepository repo;
 
-    public List<Persons> listPersons() {
+    public List<Persons> listPersons() throws ToughLuckException {
         Random rand = new Random();
         int n = rand.nextInt(100);
         if (n%4==0) {
-            return repo.returnTop0();
+            throw new ToughLuckException();
         } else {
             return repo.returnTop10();
         }
