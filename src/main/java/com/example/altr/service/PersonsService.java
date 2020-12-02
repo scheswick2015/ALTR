@@ -14,8 +14,14 @@ public class PersonsService {
     @Autowired
     private PersonsRepository repo;
 
+    private Random rand = new Random();
+
+
+    public void setsSeed(int x) {
+        rand.setSeed(x);
+    }
+
     public List<Persons> listPersons() throws ToughLuckException {
-        Random rand = new Random();
         int n = rand.nextInt(100);
         if (n%4==0) {
             throw new ToughLuckException();
