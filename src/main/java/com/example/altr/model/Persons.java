@@ -14,6 +14,13 @@ public class Persons {
     public Persons() {
 
     }
+
+    /**
+     *
+     * @param id auto-incrementing primary key to identify a person
+     * @param firstName first name that is 60 chars or less when stored in db
+     * @param lastName last name that is 60 chars or less when stored in db
+     */
     public Persons(Integer id, String firstName, String lastName) {
         this.id = id;
         FirstName = firstName;
@@ -44,5 +51,10 @@ public class Persons {
 
     public void setLastName(String lastName) {
         LastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(id  +" " +  FirstName + " " + LastName);
     }
 }

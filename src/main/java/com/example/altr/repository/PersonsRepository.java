@@ -10,7 +10,4 @@ public interface PersonsRepository extends JpaRepository<Persons, Integer> {
 
     @Query(value = "SELECT * FROM persons LIMIT 10", nativeQuery = true)
     List<Persons> returnTop10();
-
-    @Query(value = "SELECT * FROM persons LIMIT 0", nativeQuery = true)
-    List<Persons> returnTop0();
 }

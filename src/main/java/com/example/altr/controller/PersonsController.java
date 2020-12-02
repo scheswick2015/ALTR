@@ -19,6 +19,11 @@ public class PersonsController {
     @Autowired
     private PersonsService service;
 
+    /**
+     *
+     * @return ResponseEntity represents the whole HTTP response: status code, headers, and body.
+     * As a result, we can use it to fully configure the HTTP response.
+     */
     @GetMapping("/persons")
     public ResponseEntity<?> list() {
         try {

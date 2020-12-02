@@ -16,12 +16,21 @@ public class PersonsService {
 
     private Random rand = new Random();
 
-
-    public void setsSeed(int x) {
-        rand.setSeed(x);
+    /**
+     *
+     * @param seed
+     */
+    public void setsSeed(int seed) {
+        rand.setSeed(seed);
     }
 
+    /**
+     *
+     * @return Returns the top 10 results from a mysql database 75% of the time
+     * @throws ToughLuckException throws "Tough Luck" 25% of the time
+     */
     public List<Persons> listPersons() throws ToughLuckException {
+        //Random number generator is used with a % 4 to return a failed result 25% of the time
         int n = rand.nextInt(100);
         if (n%4==0) {
             throw new ToughLuckException();
